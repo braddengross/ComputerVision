@@ -1,5 +1,3 @@
-from numpy import *
-from numpy import random
 from scipy.ndimage import filters
 from imagetools.Denoise import *
 
@@ -16,3 +14,17 @@ G = filters.gaussian_filter(im, 10)
 from scipy.misc import imsave
 imsave('synth_rof.pdf', U)
 imsave('synth_gaussian.pdf', G)
+
+
+from PIL import Image
+from pylab import *
+
+im = array(Image.open('data/Empire.jpg').convert('L'))
+U, T = denoise(im, im)
+
+figure()
+gray()
+imshow(U)
+axis('equal')
+axis('off')
+show()
